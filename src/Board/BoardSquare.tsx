@@ -1,12 +1,12 @@
 import "./BoardSquare.css";
 
-const BoardSquare = ({ isOn, clickFunc }: {isOn: boolean, clickFunc: () => undefined}) => {
+const BoardSquare = ({ isOn, isSolution, clickFunc }: {isOn: boolean, isSolution: boolean, clickFunc: () => undefined}) => {
   return (
     <div 
       onClick={clickFunc} 
       className={"Square "+(isOn ? "on" : "off")}
     >
-      {isOn ? "Y" : "N"}
+      {isSolution ? "Y" : "N"}
     </div>
   );
 }

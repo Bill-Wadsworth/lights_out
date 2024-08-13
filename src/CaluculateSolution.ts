@@ -25,11 +25,10 @@ const calculateSolution = (board: boolean[][]): boolean[][] | undefined => {
     //need to turn optimalSolution back into Matrix
     const optimalSolution: boolean[][] = [];
     for (let i = 0; i < size; i++) {
-        let row: boolean[] = [];
-        for (let j = 0; j< size; j++) {
-            row.push(optimalSolutionColumn[size*i + j]);
-        }
-        optimalSolution.push(row);
+        
+        optimalSolution.push(optimalSolutionColumn.filter((_, index) => {
+            return index%size === i;
+        }));
     }
     
     return optimalSolution;

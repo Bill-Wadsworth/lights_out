@@ -1,14 +1,17 @@
 import BoardRow from "./BoardRow.tsx";
-import { useState } from "react";
-import IsInBounds from "./Utils/IsInBounds.ts";
+import IsInBounds from "../Utils/IsInBounds.ts";
 
-const Board = ({ size }: { size: number }) => {
+type Props = { 
+  board: boolean[][], 
+  setBoard: (newBoard: boolean[][]) => void,
+  solution: boolean[][],
+  updateSolution: (board: boolean[][]) => void;
+};
+const Board = ({ board, setBoard, solution, updateSolution }: Props) => {
 
-  const [board, setBoard] = useState<boolean[][]>(Array(size).fill(0).map(_ =>{
-    return Array(size).fill(false);
-  }));
+  const size = board.length;
   
-  const squareClicked = (x: number, y: number): undefined => {
+  const squareClicked = (x: number, y: number): void => {
     const nextState = board.slice();
     const surrounding = [[1, 0], [0, 1], [0, 0], [-1, 0], [0, -1]];
     surrounding.forEach(element => {
@@ -18,6 +21,7 @@ const Board = ({ size }: { size: number }) => {
       } 
     });
     setBoard(nextState);
+    updateSolution(nextState); //after a square is clicked need to change the current solution
   }
 
   return (
@@ -26,6 +30,7 @@ const Board = ({ size }: { size: number }) => {
         return (
           <BoardRow 
             row={boardRow}
+            solutionRow={solution[x]}
             clickFun={(y: number) => {squareClicked(x, y)}}
             key={x}
           />
