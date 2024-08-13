@@ -1,6 +1,6 @@
 import "./BoardSquare.css";
 
-const BoardSquare = ({ isOn, clickFunc }) => {
+const BoardSquare = ({ isOn, clickFunc }: {isOn: boolean, clickFunc: () => undefined}) => {
   return (
     <div 
       onClick={clickFunc} 

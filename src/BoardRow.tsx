@@ -1,7 +1,7 @@
-import BoardSquare from "./BoardSquare.js";
+import BoardSquare from "./BoardSquare.tsx";
 import "./BoardRow.css";
 
-const BoardRow = ({ row, clickFun }) => {
+const BoardRow = ({ row, clickFun }: {row: boolean[], clickFun: (x: number) => undefined}) => {
   return (
     <div className="row">
       {row.map((squareState, y) => {

@@ -1,18 +1,17 @@
-import BoardSquare from './BoardSquare.js';
-import BoardRow from "./BoardRow.js";
+import BoardRow from "./BoardRow.tsx";
 import { useState } from "react";
 
-const Board = ({ size }) => {
+const Board = ({ size }: { size: number }) => {
   
-  const boardArry = Array(size).fill(0).map(x => {
-    Array(size).fill(false);
-  })
+  //const boardArry = Array(size).fill(0).map(_ => {
+  //  Array(size).fill(false);
+  //})
 
-  const [board, setBoard] = useState(Array(size).fill(0).map(x =>{
+  const [board, setBoard] = useState<boolean[][]>(Array(size).fill(0).map(_ =>{
     return Array(size).fill(false);
   }));
   
-  const squareClicked = (x, y) => {
+  const squareClicked = (x: number, y: number): undefined => {
     const nextState = board.slice();
     const surrounding = [[1, 0], [0, 1], [0, 0], [-1, 0], [0, -1]];
     surrounding.forEach(element => {
@@ -24,19 +23,13 @@ const Board = ({ size }) => {
     setBoard(nextState);
   }
 
-  const rowClick = (x) => {
-    // Curry function to allow the value of X to be specified now
-    // and the value of y to be added later
-    return (y) => {squareClicked(x, y)}
-  }
-
   return (
     <div>
       {board.map((boardRow, x) => {
         return (
           <BoardRow 
             row={boardRow}
-            clickFun={rowClick(x)}
+            clickFun={(y: number) => {squareClicked(x, y)}}
             key={x}
           />
         )
