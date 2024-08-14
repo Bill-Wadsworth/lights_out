@@ -21,12 +21,14 @@ function App() {
   const [solution, setSolution] = useState<boolean[][]>(calculateSolution(board)!);
 
   return (
-    <Board 
-      board={board} 
-      setBoard={setBoard} 
-      solution={solution} 
-      updateSolution={(newBoard) => {setSolution(calculateSolution(newBoard)!)}}
-      />
+    <div className='flex place-content-center'>
+      <Board 
+        board={board} 
+        setBoard={setBoard} 
+        solution={solution} 
+        updateSolution={(newBoard) => {setSolution(calculateSolution(newBoard)!)}}
+        />
+    </div>
   );
 }
 

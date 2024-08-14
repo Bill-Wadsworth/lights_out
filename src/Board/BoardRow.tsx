@@ -1,9 +1,7 @@
 import BoardSquare from "./BoardSquare.tsx";
-import "./BoardRow.css";
-
 const BoardRow = ({ row, solutionRow, clickFun }: {row: boolean[], solutionRow: boolean[], clickFun: (x: number) => undefined}) => {
   return (
-    <div className="row">
+    <div className="flex flex-row">
       {row.map((squareState, y) => {
         return <BoardSquare 
           isOn={squareState}
