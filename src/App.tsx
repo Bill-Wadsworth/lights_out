@@ -18,10 +18,15 @@ function App() {
 
   const [board, setBoard] = useState<boolean[][]>(random);
 
-  const [solution, setSolutoin] = useState<boolean[][]>(calculateSolution(board)!);
+  const [solution, setSolution] = useState<boolean[][]>(calculateSolution(board)!);
 
   return (
-    <Board board={board} setBoard={setBoard} solution={solution} updateSolution={(newBoard) => {setSolutoin(calculateSolution(newBoard)!)}}/>
+    <Board 
+      board={board} 
+      setBoard={setBoard} 
+      solution={solution} 
+      updateSolution={(newBoard) => {setSolution(calculateSolution(newBoard)!)}}
+      />
   );
 }
 
