@@ -5,9 +5,10 @@ type Props = {
   board: boolean[][], 
   setBoard: (newBoard: boolean[][]) => void,
   solution: boolean[][],
+  showSolution: boolean;
   updateSolution: (board: boolean[][]) => void;
 };
-const Board = ({ board, setBoard, solution, updateSolution }: Props) => {
+const Board = ({ board, setBoard, solution, showSolution, updateSolution }: Props) => {
 
   const size = board.length;
   
@@ -31,6 +32,7 @@ const Board = ({ board, setBoard, solution, updateSolution }: Props) => {
           <BoardRow 
             row={boardRow}
             solutionRow={solution[x]}
+            showSolution={showSolution}
             clickFun={(y: number) => {squareClicked(x, y)}}
             key={x}
           />

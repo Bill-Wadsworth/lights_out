@@ -1,13 +1,13 @@
 import IsInBounds from "./Utils/IsInBounds";
 
-const calculateSolution = (board: boolean[][]): boolean[][] | undefined => {
+const calculateSolution = (board: boolean[][]): boolean[][] => {
     
     const size = board.length;
 
     const inverseAdjacencyMatrix = calculateInverse(caluclateAdjacencyBoard(size));
 
     if (inverseAdjacencyMatrix === undefined) {
-        return undefined;
+        return [[false]];
     }
 
     //convert board to column form
