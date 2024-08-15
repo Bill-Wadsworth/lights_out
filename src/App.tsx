@@ -43,7 +43,7 @@ function App() {
         <div className='flex place-content-center flex-col'>
           <hr className=' my-4'/>
           {/* Header over the board */}
-          <div className="flex flex-row ">
+          <div className="flex flex-row justify-evenly ">
             <button className='btn btn-blue' onClick={randomise}>
               Randomise
             </button>
@@ -52,7 +52,9 @@ function App() {
             </button>
             <div className=' text-center text-white font-bold'>
               Show Solution
-              <Toggle  toggleState={showSolution} setToggle={setShowSolution}/>
+              <div className='flex justify-center'>
+                <Toggle  toggleState={showSolution} setToggle={setShowSolution}/>
+              </div>
             </div>
             
           </div>
